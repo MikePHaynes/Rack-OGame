@@ -8,5 +8,23 @@
         Title="Rack-O" Height="450" Width="800">
     <Grid>
 
+        <StackPanel x:Name="TurnPanel"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <TextBlock FontSize="54"
+                               Text="Player:"/>
+        </StackPanel>
+
+        <Canvas x:Name="PlayerCanvas"
+                Grid.Row="1"
+                Width="300"
+                Height="300">
+            <UniformGrid x:Name="PlayerRack"
+                             Width="300"
+                             Height="300"
+                             Rows="10"
+                             Columns="1">
+            </UniformGrid>
+        </Canvas>
     </Grid>
 </Window>

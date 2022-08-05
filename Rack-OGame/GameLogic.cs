@@ -34,6 +34,11 @@ namespace Rack_OGame
                 list.RemoveAt(index);
             }
         }
+
+        public static void Rerack()
+        {
+            while (DiscardPile.Size > 1) Stockpile.Push(DiscardPile.Pop());
+        }
         
     }
 }
