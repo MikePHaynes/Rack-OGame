@@ -10,7 +10,7 @@
         Background="SkyBlue">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
-            <TextBlock FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,50" Text="Player: You"/>
+            <TextBlock x:Name="TurnBlock" FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,50" Text="Player: You"/>
             <Button x:Name="FiftySlot" Margin="0,5,0,0" Background="Red" Content="50" Foreground="White" Height="20"/>
             <Button x:Name="FortyFiveSlot" Margin="0,5,0,0" Background="Red" Content="45" Foreground="White" Height="20"/>
             <Button x:Name="FortySlot" Margin="0,5,0,0" Background="Red" Content="40" Foreground="White" Height="20"/>

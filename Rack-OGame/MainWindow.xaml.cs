@@ -20,9 +20,18 @@ namespace Rack_OGame
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Button[] Slots { get; }
+
         public MainWindow()
         {
             InitializeComponent();
+            Slots = new Button[] {FiveSlot, TenSlot, FifteenSlot, TwentySlot, TwentyFiveSlot, ThirtySlot, ThirtyFiveSlot, FortySlot, FortyFiveSlot, FiftySlot};
+            DisableSlots();
+        }
+
+        private void DisableSlots()
+        {
+            foreach (var slot in Slots) slot.IsEnabled = false;
         }
     }
 }
