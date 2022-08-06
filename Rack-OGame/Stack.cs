@@ -34,5 +34,10 @@ namespace Rack_OGame
             old.Next = null;
             return old;
         }
+
+        public int Peek()
+        {
+            return Top.Value;
+        }
     }
 }

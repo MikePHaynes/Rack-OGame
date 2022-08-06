@@ -6,19 +6,21 @@
         xmlns:local="clr-namespace:Rack_OGame"
         mc:Ignorable="d"
         Title="Rack-O" Height="450" Width="800"
-        Background="Aquamarine">
+        FontFamily="Segoe UI Light"
+        Background="SkyBlue">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
-            <Button Margin="0,5,0,0" Background="Red" Content="50" Foreground="White" Width="150" Height="20"/>
-            <Button Margin="0,5,0,0" Background="Red" Content="45" Foreground="White" Height="20"/>
-            <Button Margin="0,5,0,0" Background="Red" Content="40" Foreground="White" Height="20"/>
-            <Button Margin="0,5,0,0" Background="Red" Content="35" Foreground="White" Height="20"/>
-            <Button Margin="0,5,0,0" Background="Red" Content="30" Foreground="White" Height="20"/>
-            <Button Margin="0,5,0,0" Background="Red" Content="25" Foreground="White" Height="20"/>
-            <Button Margin="0,5,0,0" Background="Red" Content="20" Foreground="White" Height="20"/>
-            <Button Margin="0,5,0,0" Background="Red" Content="15" Foreground="White" Height="20"/>
-            <Button Margin="0,5,0,0" Background="Red" Content="10" Foreground="White" Height="20"/>
-            <Button Margin="0,5,0,0" Background="Red" Content="5" Foreground="White" Height="20"/>
+            <TextBlock FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,50" Text="Player: You"/>
+            <Button x:Name="FiftySlot" Margin="0,5,0,0" Background="Red" Content="50" Foreground="White" Height="20"/>
+            <Button x:Name="FortyFiveSlot" Margin="0,5,0,0" Background="Red" Content="45" Foreground="White" Height="20"/>
+            <Button x:Name="FortySlot" Margin="0,5,0,0" Background="Red" Content="40" Foreground="White" Height="20"/>
+            <Button x:Name="ThirtyFiveSlot" Margin="0,5,0,0" Background="Red" Content="35" Foreground="White" Height="20"/>
+            <Button x:Name="ThirtySlot" Margin="0,5,0,0" Background="Red" Content="30" Foreground="White" Height="20"/>
+            <Button x:Name="TwentyFiveSlot" Margin="0,5,0,0" Background="Red" Content="25" Foreground="White" Height="20"/>
+            <Button x:Name="TwentySlot" Margin="0,5,0,0" Background="Red" Content="20" Foreground="White" Height="20"/>
+            <Button x:Name="FifteenSlot" Margin="0,5,0,0" Background="Red" Content="15" Foreground="White" Height="20"/>
+            <Button x:Name="TenSlot" Margin="0,5,0,0" Background="Red" Content="10" Foreground="White" Height="20"/>
+            <Button x:Name="FiveSlot" Margin="0,5,0,0" Background="Red" Content="5" Foreground="White" Height="20"/>
         </StackPanel>
 
     </Grid>
