@@ -16,17 +16,15 @@ namespace Rack_OGame
         public static void InitializeGame(Button[] slots)
         {
             List<int> list = new();
-            for (int i = 0; i < 60; i++) list.Add(i + 1);
+            int i;
+            for (i = 0; i < 60; i++) list.Add(i + 1);
 
             Players[0] = new Player();
             Players[1] = new Player();
             GenerateStockpile(list);
-            for (int i = 0; i < (Players.Length * 10); i++) Players[i % Players.Length].AddCard(Stockpile.Pop());
+            for (i = 0; i < (Players.Length * 10); i++) Players[i % Players.Length].AddCard(Stockpile.Pop());
+            for (i = 0; i < Players[0].Rack.Length; i++) slots[i].Content = Players[0].Rack[i];
             DiscardPile.Push(Stockpile.Pop());
-            for (int i = 0; i < slots.Length; i++)
-            {
-                slots[i].Content = Players[0].Rack[i];
-            }
         }
 
         public static void GenerateStockpile(List<int> list)

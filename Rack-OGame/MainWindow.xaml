@@ -11,7 +11,7 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
             <TextBlock x:Name="TurnBlock" FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,15" Text="Player: You"/>
-            <Button x:Name="StockpileButton" Content="Stockpile" Background="DarkBlue" Foreground="White" Width="100" Click="Stockpile_Click"/>
+            <Button x:Name="StockpileButton" Content="Draw" Background="DarkBlue" Foreground="White" Width="100" Click="Stockpile_Click"/>
             <Button x:Name="DiscardPileButton" Content="Discard Pile" Background="DarkBlue" Foreground="White" Width="100" Margin="0,5,0,15" Click="DiscardPile_Click"/>
             <Button x:Name="FiftySlot" Margin="0,5,0,0" Background="Red" Content="50" Foreground="White" Height="20" Click="Slot_Click"/>
             <Button x:Name="FortyFiveSlot" Margin="0,5,0,0" Background="Red" Content="45" Foreground="White" Height="20" Click="Slot_Click"/>

@@ -20,14 +20,16 @@ namespace Rack_OGame
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Button[] Slots { get; }
+        public Button[] Slots { get; } 
+        public Button[] Piles { get; }
+        public int DrawnCard { get; }
 
         public MainWindow()
         {
             InitializeComponent();
-            Slots = new Button[] {FiveSlot, TenSlot, FifteenSlot, TwentySlot, TwentyFiveSlot, ThirtySlot, ThirtyFiveSlot, FortySlot, FortyFiveSlot, FiftySlot};
+            Slots = new Button[] { FiveSlot, TenSlot, FifteenSlot, TwentySlot, TwentyFiveSlot, ThirtySlot, ThirtyFiveSlot, FortySlot, FortyFiveSlot, FiftySlot };
+            Piles = new Button[] { StockpileButton, DiscardPileButton };
             GameLogic.InitializeGame(Slots);
-            //DisableSlots();
         }
 
         private void Slot_Click(object sender, RoutedEventArgs e)
@@ -37,14 +39,9 @@ namespace Rack_OGame
             {
                 if (button == Slots[i])
                 {
-
+                    
                 }
             }
-        }
-
-        private void DisableSlots()
-        {
-            foreach (var slot in Slots) slot.IsEnabled = false;
         }
 
         private void Stockpile_Click(object sender, RoutedEventArgs e)
@@ -55,6 +52,26 @@ namespace Rack_OGame
         private void DiscardPile_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void DisableSlots()
+        {
+            foreach (var slot in Slots) slot.IsEnabled = false;
+        }
+
+        private void EnableSlots()
+        {
+            foreach (var slot in Slots) slot.IsEnabled = true;
+        }
+
+        private void DisablePiles()
+        {
+            foreach (var pile in Piles) pile.IsEnabled = false;
+        }
+
+        private void EnablePiles()
+        {
+            foreach (var pile in Piles) pile.IsEnabled = true;
         }
     }
 }
