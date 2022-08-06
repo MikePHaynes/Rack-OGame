@@ -26,12 +26,35 @@ namespace Rack_OGame
         {
             InitializeComponent();
             Slots = new Button[] {FiveSlot, TenSlot, FifteenSlot, TwentySlot, TwentyFiveSlot, ThirtySlot, ThirtyFiveSlot, FortySlot, FortyFiveSlot, FiftySlot};
+            GameLogic.InitializeGame(Slots);
             //DisableSlots();
+        }
+
+        private void Slot_Click(object sender, RoutedEventArgs e)
+        {
+            Button? button = sender as Button;
+            for (int i = 0; i < Slots.Length; i++)
+            {
+                if (button == Slots[i])
+                {
+
+                }
+            }
         }
 
         private void DisableSlots()
         {
             foreach (var slot in Slots) slot.IsEnabled = false;
+        }
+
+        private void Stockpile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DiscardPile_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
