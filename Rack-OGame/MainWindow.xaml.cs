@@ -26,7 +26,7 @@ namespace Rack_OGame
         {
             InitializeComponent();
             Slots = new Button[] {FiveSlot, TenSlot, FifteenSlot, TwentySlot, TwentyFiveSlot, ThirtySlot, ThirtyFiveSlot, FortySlot, FortyFiveSlot, FiftySlot};
-            DisableSlots();
+            //DisableSlots();
         }
 
         private void DisableSlots()
