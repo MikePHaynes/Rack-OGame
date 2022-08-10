@@ -1,19 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace Rack_OGame
 {
-    public class GameLogic
+    public class RackO : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         private static Player[] Players { get; } = new Player[2];
         private static Stack Stockpile { get; } = new();
         private static Stack DiscardPile { get; } = new();
 
-        public static void InitializeGame(Button[] slots)
+        public RackO()
+        {
+
+        }
+
+        public static void InitializeGame()
         {
             List<int> list = new();
             int i;
@@ -23,8 +37,7 @@ namespace Rack_OGame
             Players[1] = new Player();
             GenerateStockpile(list);
             for (i = 0; i < (Players.Length * 10); i++) Players[i % Players.Length].AddCard(Stockpile.Pop());
-            for (i = 0; i < Players[0].Rack.Length; i++) slots[i].Content = Players[0].Rack[i];
-            DiscardPile.Push(Stockpile.Pop());
+            DiscardPile.Push(Stockpile.Pop());           
         }
 
         public static void GenerateStockpile(List<int> list)
@@ -41,6 +54,11 @@ namespace Rack_OGame
         public static void Rerack()
         {
             while (DiscardPile.Size > 1) Stockpile.Push(DiscardPile.Pop());
+        }
+
+        public static void ReplaceCard(int newCardValue, int index)
+        {
+
         }
         
     }
