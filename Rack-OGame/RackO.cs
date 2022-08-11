@@ -18,16 +18,19 @@ namespace Rack_OGame
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private static Player[] Players { get; } = new Player[2];
-        private static Stack Stockpile { get; } = new();
-        private static Stack DiscardPile { get; } = new();
+        public Player[] Players { get; } 
+        public Stack Stockpile { get; } 
+        public Stack DiscardPile { get; } 
 
         public RackO()
         {
-
+            Players = new Player[2];
+            Stockpile = new Stack();
+            DiscardPile = new Stack();
+            InitializeGame();
         }
 
-        public static void InitializeGame()
+        public void InitializeGame()
         {
             List<int> list = new();
             int i;
@@ -40,7 +43,7 @@ namespace Rack_OGame
             DiscardPile.Push(Stockpile.Pop());           
         }
 
-        public static void GenerateStockpile(List<int> list)
+        public void GenerateStockpile(List<int> list)
         {
             Random random = new();
             while (list.Count != 0)
@@ -51,12 +54,12 @@ namespace Rack_OGame
             }
         }
 
-        public static void Rerack()
+        public void Rerack()
         {
             while (DiscardPile.Size > 1) Stockpile.Push(DiscardPile.Pop());
         }
 
-        public static void ReplaceCard(int newCardValue, int index)
+        public void ReplaceCard(int newCardValue, int index)
         {
 
         }

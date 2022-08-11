@@ -32,7 +32,7 @@ namespace Rack_OGame
             Piles = new Button[] { StockpileButton, DiscardPileButton };
             DisableSlots();
             DisablePiles();
-            RackO.InitializeGame();
+            
             EnablePiles();
         }
 
