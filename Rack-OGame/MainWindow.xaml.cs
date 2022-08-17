@@ -20,9 +20,13 @@ namespace Rack_OGame
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Button[] Slots { get; } 
-        public Button[] Piles { get; }
-        public int DrawnCard { get; }
+        private readonly Player[] Players = new Player[2];      
+        private readonly Button[] Slots;
+        private readonly Button[] Piles;
+
+        private Stack Stockpile = new Stack();
+        private Stack DiscardPile = new Stack();
+        private int DrawnCard;
 
         public MainWindow()
         {
