@@ -31,7 +31,9 @@ namespace Rack_OGame
         public MainWindow()
         {
             InitializeComponent();
-            //DataContext = this;
+            Players[0] = new Player(); // Player
+            Players[1] = new Player(); // CPU
+            DataContext = Players[0];
             Slots = new Button[] { FiveSlot, TenSlot, FifteenSlot, TwentySlot, TwentyFiveSlot, ThirtySlot, ThirtyFiveSlot, FortySlot, FortyFiveSlot, FiftySlot };
             Piles = new Button[] { StockpileButton, DiscardPileButton };
             DisableSlots();
@@ -46,11 +48,11 @@ namespace Rack_OGame
             int i;
             for (i = 0; i < 60; i++) list.Add(i + 1);
 
-            Players[0] = new Player();
-            Players[1] = new Player();
             GenerateStockpile(list);
             for (i = 0; i < (Players.Length * 10); i++) Players[i % Players.Length].AddCard(Stockpile.Pop());
             DiscardPile.Push(Stockpile.Pop());
+            DiscardPileButton.Content = DiscardPile.Peek();
+            EnablePiles();
         }
 
         public void GenerateStockpile(List<int> list)
@@ -77,6 +79,10 @@ namespace Rack_OGame
                     break;
                 }
             }
+            DiscardPileButton.Content = toDiscard;
+            DiscardPile.Push(new Node(toDiscard));
+            DisableSlots();
+            EnablePiles();
         }
 
         private void Stockpile_Click(object sender, RoutedEventArgs e)

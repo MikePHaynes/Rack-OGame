@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Rack_OGame" d:DataContext="{d:DesignInstance Type=local:RackO}"
+        xmlns:local="clr-namespace:Rack_OGame" d:DataContext="{d:DesignInstance Type=local:Player}"
         mc:Ignorable="d"
         Title="Rack-O" Height="450" Width="800"
         FontFamily="Segoe UI Light"
@@ -13,16 +13,16 @@
             <TextBlock x:Name="TurnBlock" FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,15" Text="Player: You"/>
             <Button x:Name="StockpileButton" Content="Draw" Background="DarkBlue" Foreground="White" Height ="20" Width="100" Click="Stockpile_Click"/>
             <Button x:Name="DiscardPileButton" Content="{Binding DiscardPile.Top.Value}" Background="DarkBlue" Foreground="White" Height="20" Width="100" Margin="0,5,0,15" Click="DiscardPile_Click"/>
-            <Button x:Name="FiftySlot" Margin="0,5,0,0" Background="Red" Content="{Binding Players[0].Rack[9]}" Foreground="White" Height="20" Click="Slot_Click"/>
-            <Button x:Name="FortyFiveSlot" Margin="0,5,0,0" Background="Red" Content="{Binding Players[0].Rack[8]}" Foreground="White" Height="20" Click="Slot_Click"/>
-            <Button x:Name="FortySlot" Margin="0,5,0,0" Background="Red" Content="{Binding Players[0].Rack[7]}" Foreground="White" Height="20" Click="Slot_Click"/>
-            <Button x:Name="ThirtyFiveSlot" Margin="0,5,0,0" Background="Red" Content="{Binding Players[0].Rack[6]}" Foreground="White" Height="20" Click="Slot_Click"/>
-            <Button x:Name="ThirtySlot" Margin="0,5,0,0" Background="Red" Content="{Binding Players[0].Rack[5]}" Foreground="White" Height="20" Click="Slot_Click"/>
-            <Button x:Name="TwentyFiveSlot" Margin="0,5,0,0" Background="Red" Content="{Binding Players[0].Rack[4]}" Foreground="White" Height="20" Click="Slot_Click"/>
-            <Button x:Name="TwentySlot" Margin="0,5,0,0" Background="Red" Content="{Binding Players[0].Rack[3]}" Foreground="White" Height="20" Click="Slot_Click"/>
-            <Button x:Name="FifteenSlot" Margin="0,5,0,0" Background="Red" Content="{Binding Players[0].Rack[2]}" Foreground="White" Height="20" Click="Slot_Click"/>
-            <Button x:Name="TenSlot" Margin="0,5,0,0" Background="Red" Content="{Binding Players[0].Rack[1]}" Foreground="White" Height="20" Click="Slot_Click"/>
-            <Button x:Name="FiveSlot" Margin="0,5,0,0" Background="Red" Content="{Binding Players[0].Rack[0]}" Foreground="White" Height="20" Click="Slot_Click"/>
+            <Button x:Name="FiftySlot" Margin="0,5,0,0" Background="Red" Content="{Binding Rack[9]}" Foreground="White" Height="20" Click="Slot_Click"/>
+            <Button x:Name="FortyFiveSlot" Margin="0,5,0,0" Background="Red" Content="{Binding Rack[8]}" Foreground="White" Height="20" Click="Slot_Click"/>
+            <Button x:Name="FortySlot" Margin="0,5,0,0" Background="Red" Content="{Binding Rack[7]}" Foreground="White" Height="20" Click="Slot_Click"/>
+            <Button x:Name="ThirtyFiveSlot" Margin="0,5,0,0" Background="Red" Content="{Binding Rack[6]}" Foreground="White" Height="20" Click="Slot_Click"/>
+            <Button x:Name="ThirtySlot" Margin="0,5,0,0" Background="Red" Content="{Binding Rack[5]}" Foreground="White" Height="20" Click="Slot_Click"/>
+            <Button x:Name="TwentyFiveSlot" Margin="0,5,0,0" Background="Red" Content="{Binding Rack[4]}" Foreground="White" Height="20" Click="Slot_Click"/>
+            <Button x:Name="TwentySlot" Margin="0,5,0,0" Background="Red" Content="{Binding Rack[3]}" Foreground="White" Height="20" Click="Slot_Click"/>
+            <Button x:Name="FifteenSlot" Margin="0,5,0,0" Background="Red" Content="{Binding Rack[2]}" Foreground="White" Height="20" Click="Slot_Click"/>
+            <Button x:Name="TenSlot" Margin="0,5,0,0" Background="Red" Content="{Binding Rack[1]}" Foreground="White" Height="20" Click="Slot_Click"/>
+            <Button x:Name="FiveSlot" Margin="0,5,0,0" Background="Red" Content="{Binding Rack[0]}" Foreground="White" Height="20" Click="Slot_Click"/>
         </StackPanel>
         
     </Grid>
