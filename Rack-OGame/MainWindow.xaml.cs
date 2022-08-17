@@ -31,13 +31,37 @@ namespace Rack_OGame
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new RackO();
+            //DataContext = this;
             Slots = new Button[] { FiveSlot, TenSlot, FifteenSlot, TwentySlot, TwentyFiveSlot, ThirtySlot, ThirtyFiveSlot, FortySlot, FortyFiveSlot, FiftySlot };
             Piles = new Button[] { StockpileButton, DiscardPileButton };
             DisableSlots();
             DisablePiles();
-            
+            InitializeGame();
             EnablePiles();
+        }
+
+        public void InitializeGame()
+        {
+            List<int> list = new();
+            int i;
+            for (i = 0; i < 60; i++) list.Add(i + 1);
+
+            Players[0] = new Player();
+            Players[1] = new Player();
+            GenerateStockpile(list);
+            for (i = 0; i < (Players.Length * 10); i++) Players[i % Players.Length].AddCard(Stockpile.Pop());
+            DiscardPile.Push(Stockpile.Pop());
+        }
+
+        public void GenerateStockpile(List<int> list)
+        {
+            Random random = new();
+            while (list.Count != 0)
+            {
+                int index = random.Next(list.Count);
+                Stockpile.Push(new Node(list[index]));
+                list.RemoveAt(index);
+            }
         }
 
         private void Slot_Click(object sender, RoutedEventArgs e)
