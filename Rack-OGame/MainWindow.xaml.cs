@@ -24,8 +24,8 @@ namespace Rack_OGame
         private readonly Button[] Slots;
         private readonly Button[] Piles;
 
-        private Stack Stockpile = new Stack();
-        private Stack DiscardPile = new Stack();
+        private Stack Stockpile = new();
+        private Stack DiscardPile = new();
         private int DrawnCard;
 
         public MainWindow()
@@ -43,23 +43,36 @@ namespace Rack_OGame
         private void Slot_Click(object sender, RoutedEventArgs e)
         {
             Button? button = sender as Button;
+            int toDiscard = (int)button.Content;
             button.Content = DrawnCard;
             for (int i = 0; i < Slots.Length; i++)
             {
-                
+                if (button == Slots[i])
+                {
+                    Players[0].Rack[i] = DrawnCard;
+                    break;
+                }
             }
         }
 
         private void Stockpile_Click(object sender, RoutedEventArgs e)
         {
             DisablePiles();
+            DrawnCard = Stockpile.Pop().Value;
+            if (Stockpile.Size == 0) Rerack();
             EnableSlots();
         }
 
         private void DiscardPile_Click(object sender, RoutedEventArgs e)
         {
             DisablePiles();
+            DrawnCard = DiscardPile.Pop().Value;
             EnableSlots();
+        }
+
+        public void Rerack()
+        {
+            while (DiscardPile.Size > 1) Stockpile.Push(DiscardPile.Pop());
         }
 
         private void DisableSlots()
