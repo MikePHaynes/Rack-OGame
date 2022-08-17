@@ -38,7 +38,7 @@ namespace Rack_OGame
 
         public bool HasNumericalSequence()
         {
-            for(int i = 0; i < Rack.Length; i++)
+            for(int i = 0; i < Rack.Length - 1; i++)
             {
                 if (Rack[i] > Rack[i + 1]) return false;
             }

@@ -79,16 +79,18 @@ namespace Rack_OGame
                     break;
                 }
             }
+            if (Players[0].HasNumericalSequence() && Players[0].HasThreeCardRun()) MessageBlock.Text = "Player Wins!";
             DiscardPileButton.Content = toDiscard;
             DiscardPile.Push(new Node(toDiscard));
             DisableSlots();
-            EnablePiles();
+            CPUTurn();
         }
 
         private void Stockpile_Click(object sender, RoutedEventArgs e)
         {
             DisablePiles();
             DrawnCard = Stockpile.Pop().Value;
+            MessageBlock.Text = $"Drew a {DrawnCard}";
             if (Stockpile.Size == 0) Rerack();
             EnableSlots();
         }
@@ -97,6 +99,7 @@ namespace Rack_OGame
         {
             DisablePiles();
             DrawnCard = DiscardPile.Pop().Value;
+            MessageBlock.Text = $"Drew a {DrawnCard}";
             EnableSlots();
         }
 
@@ -107,7 +110,7 @@ namespace Rack_OGame
 
         async private void CPUTurn()
         {
-            DisablePiles();
+            MessageBlock.Text = "Player: CPU";
             await Task.Delay(TimeSpan.FromSeconds(3));
             Random random = new();
             int choice;
@@ -119,6 +122,8 @@ namespace Rack_OGame
             }
             else choice = DiscardPile.Pop().Value;
             CPUFindSlot(choice);
+            if (Players[1].HasNumericalSequence()) MessageBlock.Text = "CPU Won!";
+            else MessageBlock.Text = "Player: You";
             EnablePiles();
         }
 
