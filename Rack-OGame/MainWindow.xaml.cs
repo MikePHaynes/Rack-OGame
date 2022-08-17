@@ -75,6 +75,40 @@ namespace Rack_OGame
             while (DiscardPile.Size > 1) Stockpile.Push(DiscardPile.Pop());
         }
 
+        async private void CPUTurn()
+        {
+            DisablePiles();
+            await Task.Delay(TimeSpan.FromSeconds(3));
+            Random random = new Random();
+            int choice;
+            int draw = random.Next(2);
+            if (draw == 0)
+            {
+                choice = Stockpile.Pop().Value;
+                if (Stockpile.Size == 0) Rerack();
+            }
+            else choice = DiscardPile.Pop().Value;
+            CPUFindSlot(choice);
+            EnablePiles();
+        }
+
+        private void CPUFindSlot(int choice)
+        {
+            int smallestDifference = 60;
+            int smallestDiffIndex = 0;
+            for (int i = 0; i < Players[1].Rack.Length; i++)
+            {
+                if (Math.Abs((i + 1) * 5 - choice) < smallestDifference)
+                {
+                    smallestDiffIndex = i;
+                    smallestDifference = Math.Abs((i + 1) * 5 - choice);
+                }
+            }
+            int toReplace = Players[1].Rack[smallestDiffIndex];
+            Players[1].Rack[smallestDiffIndex] = choice;
+            DiscardPile.Push(new Node(toReplace));
+        }
+
         private void DisableSlots()
         {
             foreach (var slot in Slots) slot.IsEnabled = false;
