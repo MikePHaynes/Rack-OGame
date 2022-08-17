@@ -10,7 +10,7 @@
         Background="SkyBlue">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
-            <TextBlock x:Name="TurnBlock" FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,15" Text="Player: You"/>
+            <TextBlock x:Name="MessageBlock" FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,15" Text="Player: You"/>
             <Button x:Name="StockpileButton" Content="Draw" Background="DarkBlue" Foreground="White" Height ="20" Width="100" Click="Stockpile_Click"/>
             <Button x:Name="DiscardPileButton" Content="{Binding DiscardPile.Top.Value}" Background="DarkBlue" Foreground="White" Height="20" Width="100" Margin="0,5,0,15" Click="DiscardPile_Click"/>
             <Button x:Name="FiftySlot" Margin="0,5,0,0" Background="Red" Content="{Binding Rack[9]}" Foreground="White" Height="20" Click="Slot_Click"/>

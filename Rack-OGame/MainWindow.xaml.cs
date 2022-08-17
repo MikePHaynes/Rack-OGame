@@ -24,8 +24,8 @@ namespace Rack_OGame
         private readonly Button[] Slots;
         private readonly Button[] Piles;
 
-        private Stack Stockpile = new();
-        private Stack DiscardPile = new();
+        private readonly Stack Stockpile = new();
+        private readonly Stack DiscardPile = new();
         private int DrawnCard;
 
         public MainWindow()
@@ -42,7 +42,7 @@ namespace Rack_OGame
             EnablePiles();
         }
 
-        public void InitializeGame()
+        private void InitializeGame()
         {
             List<int> list = new();
             int i;
@@ -55,7 +55,7 @@ namespace Rack_OGame
             EnablePiles();
         }
 
-        public void GenerateStockpile(List<int> list)
+        private void GenerateStockpile(List<int> list)
         {
             Random random = new();
             while (list.Count != 0)
@@ -109,7 +109,7 @@ namespace Rack_OGame
         {
             DisablePiles();
             await Task.Delay(TimeSpan.FromSeconds(3));
-            Random random = new Random();
+            Random random = new();
             int choice;
             int draw = random.Next(2);
             if (draw == 0)
