@@ -20,10 +20,9 @@ namespace Rack_OGame
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly Player[] Players = new Player[2];      
+        private readonly Player[] Players;      
         private readonly Button[] Slots;
         private readonly Button[] Piles;
-
         private readonly Stack Stockpile = new();
         private readonly Stack DiscardPile = new();
         private int DrawnCard;
@@ -31,11 +30,10 @@ namespace Rack_OGame
         public MainWindow()
         {
             InitializeComponent();
-            Players[0] = new Player(); // Player
-            Players[1] = new Player(); // CPU
-            DataContext = Players[0];
+            Players = new Player[] { new Player(), new Player() };
             Slots = new Button[] { FiveSlot, TenSlot, FifteenSlot, TwentySlot, TwentyFiveSlot, ThirtySlot, ThirtyFiveSlot, FortySlot, FortyFiveSlot, FiftySlot };
             Piles = new Button[] { StockpileButton, DiscardPileButton };
+            DataContext = Players[0];
             DisableSlots();
             DisablePiles();
             InitializeGame();
@@ -142,16 +140,25 @@ namespace Rack_OGame
             int toReplace = Players[1].Rack[smallestDiffIndex];
             Players[1].Rack[smallestDiffIndex] = choice;
             DiscardPile.Push(new Node(toReplace));
+            DiscardPileButton.Content = DiscardPile.Peek();
         }
 
         private void DisableSlots()
         {
-            foreach (var slot in Slots) slot.IsEnabled = false;
+            foreach (var slot in Slots)
+            {
+                slot.IsEnabled = false;
+                slot.Foreground = Brushes.Red;
+            }
         }
 
         private void EnableSlots()
         {
-            foreach (var slot in Slots) slot.IsEnabled = true;
+            foreach (var slot in Slots)
+            {
+                slot.IsEnabled = true;
+                slot.Foreground = Brushes.White;
+            }
         }
 
         private void DisablePiles()
