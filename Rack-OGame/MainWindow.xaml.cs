@@ -47,8 +47,8 @@ namespace Rack_OGame
             for (i = 0; i < 60; i++) list.Add(i + 1);
 
             GenerateStockpile(list);
-            for (i = 0; i < (Players.Length * 10); i++) Players[i % Players.Length].AddCard(Stockpile.Pop());
-            DiscardPile.Push(Stockpile.Pop());
+            for (i = 0; i < (Players.Length * 10); i++) Players[i % Players.Length].AddCard(Stockpile.Pop()!);
+            DiscardPile.Push(Stockpile.Pop()!);
             DiscardPileButton.Content = DiscardPile.Peek();
             EnablePiles();
         }
@@ -67,7 +67,7 @@ namespace Rack_OGame
         private void Slot_Click(object sender, RoutedEventArgs e)
         {
             Button? button = sender as Button;
-            int toDiscard = (int)button.Content;
+            int toDiscard = (int)button!.Content;
             button.Content = DrawnCard;
             for (int i = 0; i < Slots.Length; i++)
             {
@@ -87,7 +87,7 @@ namespace Rack_OGame
         private void Stockpile_Click(object sender, RoutedEventArgs e)
         {
             DisablePiles();
-            DrawnCard = Stockpile.Pop().Value;
+            DrawnCard = Stockpile.Pop()!.Value;
             MessageBlock.Text = $"Drew a {DrawnCard}";
             if (Stockpile.Size == 0) Rerack();
             EnableSlots();
@@ -96,14 +96,14 @@ namespace Rack_OGame
         private void DiscardPile_Click(object sender, RoutedEventArgs e)
         {
             DisablePiles();
-            DrawnCard = DiscardPile.Pop().Value;
+            DrawnCard = DiscardPile.Pop()!.Value;
             MessageBlock.Text = $"Drew a {DrawnCard}";
             EnableSlots();
         }
 
         public void Rerack()
         {
-            while (DiscardPile.Size > 1) Stockpile.Push(DiscardPile.Pop());
+            while (DiscardPile.Size > 1) Stockpile.Push(DiscardPile.Pop()!);
         }
 
         async private void CPUTurn()
@@ -115,10 +115,10 @@ namespace Rack_OGame
             int draw = random.Next(2);
             if (draw == 0)
             {
-                choice = Stockpile.Pop().Value;
+                choice = Stockpile.Pop()!.Value;
                 if (Stockpile.Size == 0) Rerack();
             }
-            else choice = DiscardPile.Pop().Value;
+            else choice = DiscardPile.Pop()!.Value;
             CPUFindSlot(choice);
             if (Players[1].HasNumericalSequence()) MessageBlock.Text = "CPU Won!";
             else MessageBlock.Text = "Player: You";

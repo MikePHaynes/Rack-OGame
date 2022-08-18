@@ -28,8 +28,8 @@ namespace Rack_OGame
         {
             if (Size == 0) return null;
 
-            Node? old = Top;
-            Top = Top.Next;
+            Node old = Top!;
+            if(Top!.Next is not null) Top = Top.Next;
             Size--;
             old.Next = null;
             return old;
@@ -37,7 +37,7 @@ namespace Rack_OGame
 
         public int Peek()
         {
-            return Top.Value;
+            return Top!.Value;
         }
     }
 }
