@@ -42,12 +42,9 @@ namespace Rack_OGame
 
         private void InitializeGame()
         {
-            List<int> list = new();
-            int i;
-            for (i = 0; i < 60; i++) list.Add(i + 1);
-
+            List<int> list = Enumerable.Range(1, 60).ToList();
             GenerateStockpile(list);
-            for (i = 0; i < (Players.Length * 10); i++) Players[i % Players.Length].AddCard(Stockpile.Pop()!);
+            for (int i = 0; i < (Players.Length * 10); i++) Players[i % Players.Length].AddCard(Stockpile.Pop()!);
             DiscardPile.Push(Stockpile.Pop()!);
             DiscardPileButton.Content = DiscardPile.Peek();
             EnablePiles();
