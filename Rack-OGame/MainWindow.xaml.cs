@@ -74,11 +74,14 @@ namespace Rack_OGame
                     break;
                 }
             }
-            if (Players[0].HasNumericalSequence() && Players[0].HasThreeCardRun()) MessageBlock.Text = "Player Wins!";
-            DiscardPileButton.Content = toDiscard;
-            DiscardPile.Push(new Node(toDiscard));
-            DisableSlots();
-            CPUTurn();
+            if (Players[0].HasNumericalSequence() && Players[0].HasThreeCardRun()) ShowWinner(Winner.Player);
+            else 
+            {
+                DiscardPileButton.Content = toDiscard;
+                DiscardPile.Push(new Node(toDiscard));
+                DisableSlots();
+                CPUTurn();
+            }            
         }
 
         private void Stockpile_Click(object sender, RoutedEventArgs e)
@@ -96,6 +99,11 @@ namespace Rack_OGame
             DrawnCard = DiscardPile.Pop()!.Value;
             MessageBlock.Text = $"Drew a {DrawnCard}";
             EnableSlots();
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         public void Rerack()
@@ -117,9 +125,12 @@ namespace Rack_OGame
             }
             else choice = DiscardPile.Pop()!.Value;
             CPUFindSlot(choice);
-            if (Players[1].HasNumericalSequence()) MessageBlock.Text = "CPU Won!";
-            else MessageBlock.Text = "Player: You";
-            EnablePiles();
+            if (Players[1].HasNumericalSequence()) ShowWinner(Winner.CPU);
+            else 
+            {
+                MessageBlock.Text = "Player: You";
+                EnablePiles();
+            }           
         }
 
         private void CPUFindSlot(int choice)
@@ -138,6 +149,13 @@ namespace Rack_OGame
             Players[1].Rack[smallestDiffIndex] = choice;
             DiscardPile.Push(new Node(toReplace));
             DiscardPileButton.Content = DiscardPile.Peek();
+        }
+
+        private void ShowWinner(Winner winner)
+        {
+            GamePanel.Visibility = Visibility.Hidden;
+            ResultTextBox.Text += winner.ToString();
+            EndScreenPanel.Visibility = Visibility.Visible;
         }
 
         private void DisableSlots()
