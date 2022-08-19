@@ -8,6 +8,7 @@
         Title="Rack-O" Height="450" Width="800"
         FontFamily="Segoe UI Light"
         Background="SkyBlue">
+    <Viewbox>
     <Grid>
         <StackPanel x:Name="GamePanel" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
             <TextBlock x:Name="MessageBlock" FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,15" Text="Player: You"/>
@@ -29,4 +30,5 @@
             <Button Content="Exit" Margin="0,20,0,0" FontSize="34" Background="Red" Foreground="White" Width="200" Click="Exit_Click"/>
         </StackPanel>
     </Grid>
+    </Viewbox>
 </Window>
