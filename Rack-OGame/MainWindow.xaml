@@ -26,7 +26,7 @@
         </StackPanel>
         <StackPanel x:Name="EndScreenPanel" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock x:Name="ResultTextBox" FontSize="54" Text="Winner: " Margin="0,0,0,15"/>
-            <Button Content="Exit" Margin="0,20,0,0" FontSize="34" Background="Red" Foreground="White" Width="200" Click="PlayAgain_Click"/>
+            <Button Content="Exit" Margin="0,20,0,0" FontSize="34" Background="Red" Foreground="White" Width="200" Click="Exit_Click"/>
         </StackPanel>
     </Grid>
 </Window>
