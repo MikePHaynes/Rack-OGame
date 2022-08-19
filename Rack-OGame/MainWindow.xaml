@@ -10,7 +10,7 @@
         Background="SkyBlue">
     <Viewbox>
     <Grid>
-        <StackPanel x:Name="GamePanel" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
+            <StackPanel x:Name="GamePanel" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
             <TextBlock x:Name="MessageBlock" FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,15" Text="Player: You"/>
             <Button x:Name="StockpileButton" Content="Draw" Background="DarkBlue" Foreground="White" Height ="20" Width="100" Click="Stockpile_Click"/>
             <Button x:Name="DiscardPileButton" Content="{Binding DiscardPile.Top.Value}" Background="DarkBlue" Foreground="White" Height="20" Width="100" Margin="0,5,0,15" Click="DiscardPile_Click"/>
@@ -25,9 +25,10 @@
             <Button x:Name="TenSlot" Margin="0,5,0,0" Background="Red" Content="{Binding Rack[1]}" Foreground="White" Height="20" Click="Slot_Click"/>
             <Button x:Name="FiveSlot" Margin="0,5,0,0" Background="Red" Content="{Binding Rack[0]}" Foreground="White" Height="20" Click="Slot_Click"/>
         </StackPanel>
-        <StackPanel x:Name="EndScreenPanel" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel x:Name="EndScreenPanel" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock x:Name="ResultTextBox" FontSize="54" Text="Winner: " Margin="0,0,0,15"/>
-            <Button Content="Exit" Margin="0,20,0,0" FontSize="34" Background="Red" Foreground="White" Width="200" Click="Exit_Click"/>
+                <TextBlock x:Name="RackTextBox" HorizontalAlignment="Center" FontSize="20" Text="" Margin="0,0,0,0"/>
+                <Button Content="Exit" Margin="0,20,0,0" FontSize="34" Background="Red" Foreground="White" Width="200" Click="Exit_Click"/>
         </StackPanel>
     </Grid>
     </Viewbox>

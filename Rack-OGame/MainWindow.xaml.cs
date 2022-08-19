@@ -155,6 +155,8 @@ namespace Rack_OGame
         {
             GamePanel.Visibility = Visibility.Hidden;
             ResultTextBox.Text += winner.ToString();
+            if (winner is Winner.Player) RackTextBox.Text = String.Join(", ", Players[0].Rack);
+            else RackTextBox.Text = String.Join(", ", Players[1].Rack);
             EndScreenPanel.Visibility = Visibility.Visible;
         }
 
